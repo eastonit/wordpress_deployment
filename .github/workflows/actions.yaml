@@ -20,14 +20,17 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::495425695747:user/terraform
-          aws-region: us-east-2
+          aws-region: eu-west-2
+
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform-wrapper: false
+
       - name: Terraform Init
         id: init
         run: terraform init
+
       - name: Terraform Plan
         id: plan
         run: terraform plan
