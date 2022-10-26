@@ -19,7 +19,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::495425695747:user/terraform
+          role-to-assume: arn:aws:iam::495425695747:instance-profile/terraform_role
           aws-region: eu-west-2
 
       - uses: actions/checkout@v2
