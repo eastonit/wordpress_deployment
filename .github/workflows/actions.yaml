@@ -6,7 +6,7 @@ on:
   push:
     paths:
       - '*/**'
-  pull_requests:
+  pull_request:
     branches : [ main ]
 defaults:
   run:
