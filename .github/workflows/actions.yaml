@@ -15,11 +15,12 @@ jobs:
   terraform:
     name: terraform validate
     runs-on: ubuntu-latest
-    env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: eu-west-2
     steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::495425695747:user/terraform
+          aws-region: us-east-2
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v2
         with:
