@@ -28,7 +28,6 @@ resource "aws_s3_bucket_versioning" "enabled" {
   versioning_configuration {
     status = "Enabled"
   }
-
 }
 
 # Enable Server Side Encryption for Terraform State File at rest
