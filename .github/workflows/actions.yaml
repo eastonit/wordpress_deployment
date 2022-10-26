@@ -11,6 +11,9 @@ on:
 defaults:
   run:
     shell: bash
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
 jobs:
   terraform:
     name: terraform validate
@@ -21,6 +24,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::495425695747:instance-profile/terraform_role
           aws-region: eu-west-2
+        id: 
 
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v2
