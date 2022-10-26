@@ -17,11 +17,13 @@ jobs:
         continue-on-error: true
 
       - name: Terraform Initialise
+      - uses: hashicorp/setup-terraform@v2
         id: init
         run: terraform init
         continue-on-error: true
 
       - name: Terraform Plan
+      - uses: hashicorp/setup-terraform@v2
         id: plan
         run: terraform plan -no-color
         continue-on-error: true
