@@ -5,6 +5,25 @@ jobs:
   terraform-format-check:
     runs-on: ubuntu-latest
     steps:
+      - name: terraform fmt
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
       - run: terraform fmt -check
+
+    steps:
+      - name: terraform init
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+      - run: terraform init
+
+    steps:
+      - name: terraform plan
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+      - run: terraform plan
+
+    steps:
+      - name: terraform apply
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+      - run: terraform apply
