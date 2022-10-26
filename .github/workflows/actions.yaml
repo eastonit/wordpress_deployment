@@ -8,7 +8,7 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@3
+      - uses: actions/checkout@2
       - name: Terraform Validate
         id: fmt
         run: terraform fmt -check
