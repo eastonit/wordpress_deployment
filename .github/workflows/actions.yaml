@@ -25,8 +25,8 @@ jobs:
         with:
           terraform-wrapper: false
       - name: Terraform Init
-      - id: init
-      - run: terraform init
+        id: init
+        run: terraform init
       - name: Terraform Plan
-      - id: plan
-      - run: terraform plan
+        id: plan
+        run: terraform plan
