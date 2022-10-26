@@ -1,29 +1,10 @@
-name: Deploy WordPress Terraform Infrastructure
-run-name: ${{ github.actor }} is running WordPress Deployment...
+name: Wordpress Deployment
+run-name: ${{ github.actor }} is running Wordpress Deployment
 on: [push]
 jobs:
-  terraform_deployment:
+  terraform-format-check:
     runs-on: ubuntu-latest
-    name: Validate Teraform Code
-
     steps:
-      - name: Checkout Code
-      - uses: actions/checkout@2
-
-      - name: Terraform Validate
+      - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
-
-      - name: Terraform Initialise
-      - uses: hashicorp/setup-terraform@v2
-        id: init
-        run: terraform init
-        continue-on-error: true
-
-      - name: Terraform Plan
-      - uses: hashicorp/setup-terraform@v2
-        id: plan
-        run: terraform plan -no-color
-        continue-on-error: true
+      - run: terraform fmt -check
