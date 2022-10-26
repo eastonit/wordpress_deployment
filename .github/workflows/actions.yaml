@@ -12,8 +12,8 @@ defaults:
   run:
     shell: bash
 permissions:
-      id-token: write # This is required for requesting the JWT
-      contents: read  # This is required for actions/checkout
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
 jobs:
   terraform:
     name: terraform validate
@@ -22,7 +22,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::495425695747:instance-profile/terraform_role
+          role-to-assume: arn:aws:iam::495425695747:role/terraform_role
           aws-region: eu-west-2
 
       - uses: actions/checkout@v2
