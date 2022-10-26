@@ -1,20 +1,20 @@
 # Set up the Terraform State file configuration
 
-# terraform {
-#   backend "s3" {
-#     bucket = "eit-terraform-state"
-#     key    = "wordpress-terraform-state.state"
-#     region = "eu-west-2"
+terraform {
+  backend "s3" {
+    bucket = "eit-general-terraform-state"
+    key    = "wordpress-terraform-state.state"
+    region = "eu-west-2"
 
-#     dynamodb_table = "eit-terraform-locks"
-#     encrypt        = true
+    dynamodb_table = "eit-terraform-locks"
+    encrypt        = true
 
-#   }
-# }
+  }
+}
 
 # Create an S3 bucket to store the Terraform State File
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "eit-terraform-state"
+  bucket = "eit-general-terraform-state"
 
   lifecycle {
     prevent_destroy = true

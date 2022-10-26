@@ -1,11 +1,32 @@
 name: Wordpress Deployment
 run-name: ${{ github.actor }} is running Wordpress Deployment
-on: [push]
+on:
+  # Manual Trigger
+  workflow_dispatch:
+  push:
+    paths:
+      - '*/**'
+  pull_requests:
+    branches : [ main ]
+defaults:
+  run:
+    shell: bash
 jobs:
-  terraform-format-check:
+  terraform:
+    name: terraform validate
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: eu-west-2
     steps:
-      - name: terraform fmt
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v2
-      - run: terraform fmt -check
+        with:
+          terraform-wrapper: false
+      - name: Terraform Init
+      - id: init
+      - run: terraform init
+      - name: Terraform Plan
+      - id: plan
+      - run: terraform plan
