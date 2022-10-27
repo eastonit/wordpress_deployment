@@ -81,5 +81,10 @@ resource "aws_route_table" "wp_vpc_route_table" {
 
 resource "aws_internet_gateway" "wp_internet_gateway" {
   vpc_id = aws_vpc.wp_vpc.id
-  Name   = "${var.project_name} Internet Gateway"
+
+  tags = {
+    Project = var.project_name
+    Name    = "${var.project_name} Internet Gateway"
+  }
+
 }
