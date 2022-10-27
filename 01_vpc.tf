@@ -44,3 +44,8 @@ resource "aws_route_table" "wp_vpc_route_table" {
     Project = var.project_name
   }
 }
+
+resource "aws_internet_gateway" "wp_internet_gateway" {
+  vpc_id = aws_vpc.wp_vpc.id
+
+}
