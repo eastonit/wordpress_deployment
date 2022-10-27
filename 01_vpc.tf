@@ -72,10 +72,10 @@ resource "aws_subnet" "private_3_subnet" {
 
 resource "aws_route_table" "wp_vpc_route_table" {
   vpc_id = aws_vpc.wp_vpc.id
-  Name   = "${var.project_name} Route Table"
 
   tags = {
     Project = var.project_name
+    Name    = "${var.project_name} Route Table"
   }
 }
 
