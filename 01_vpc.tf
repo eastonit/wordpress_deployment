@@ -1,5 +1,5 @@
 resource "aws_vpc" "wp_vpc" {
-  cidr_block           = "10.0.0.0/24"
+  cidr_block           = "10.16.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
 
@@ -11,19 +11,61 @@ resource "aws_vpc" "wp_vpc" {
 
 resource "aws_subnet" "public_1_subnet" {
   vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.10.10.0/25"
+  cidr_block = "10.16.16.0/20"
 
   tags = {
     Project = var.project_name
+    Name    = "Public 1"
+  }
+}
+
+resource "aws_subnet" "public_2_subnet" {
+  vpc_id     = aws_vpc.wp_vpc.id
+  cidr_block = "10.16.32.0/20"
+
+  tags = {
+    Project = var.project_name
+    Name    = "Public 2"
+  }
+}
+
+resource "aws_subnet" "public_3_subnet" {
+  vpc_id     = aws_vpc.wp_vpc.id
+  cidr_block = "10.16.48.0/20"
+
+  tags = {
+    Project = var.project_name
+    Name    = "Public 3"
   }
 }
 
 resource "aws_subnet" "private_1_subnet" {
   vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.10.10.0/25"
+  cidr_block = "10.16.80.0/20"
 
   tags = {
     Project = var.project_name
+    Name    = "Private 1"
+  }
+}
+
+resource "aws_subnet" "private_2_subnet" {
+  vpc_id     = aws_vpc.wp_vpc.id
+  cidr_block = "10.16.96.0/20"
+
+  tags = {
+    Project = var.project_name
+    Name    = "Private 2"
+  }
+}
+
+resource "aws_subnet" "private_3_subnet" {
+  vpc_id     = aws_vpc.wp_vpc.id
+  cidr_block = "10.16.112.0/20"
+
+  tags = {
+    Project = var.project_name
+    Name    = "Private 3"
   }
 }
 
