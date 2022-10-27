@@ -1,5 +1,5 @@
 resource "aws_vpc" "wp_vpc" {
-  cidr_block           = "10.10.0.0/27"
+  cidr_block           = "10.10.10.0/24"
   enable_dns_hostnames = true
   enable_dns_support   = true
 
@@ -11,7 +11,7 @@ resource "aws_vpc" "wp_vpc" {
 
 resource "aws_subnet" "public_1_subnet" {
   vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.10.10.0/28"
+  cidr_block = "10.10.10.0/25"
 
   tags = {
     Project = var.project_name
@@ -20,7 +20,7 @@ resource "aws_subnet" "public_1_subnet" {
 
 resource "aws_subnet" "private_1_subnet" {
   vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.10.20.0/28"
+  cidr_block = "10.10.10.128/25"
 
   tags = {
     Project = var.project_name
