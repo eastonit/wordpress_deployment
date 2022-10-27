@@ -5,6 +5,7 @@ resource "aws_vpc" "wp_vpc" {
 
   tags = {
     Project = var.project_name
+    Name    = "${var.project_name} VPC"
   }
 
 }
@@ -15,7 +16,7 @@ resource "aws_subnet" "public_1_subnet" {
 
   tags = {
     Project = var.project_name
-    Name    = "Public 1"
+    Name    = "${var.project_name} Public 1 Subnet"
   }
 }
 
@@ -25,7 +26,7 @@ resource "aws_subnet" "public_2_subnet" {
 
   tags = {
     Project = var.project_name
-    Name    = "Public 2"
+    Name    = "${var.project_name} Public 2 Subnet"
   }
 }
 
@@ -35,7 +36,7 @@ resource "aws_subnet" "public_3_subnet" {
 
   tags = {
     Project = var.project_name
-    Name    = "Public 3"
+    Name    = "${var.project_name} Public 3 Subnet"
   }
 }
 
@@ -45,7 +46,7 @@ resource "aws_subnet" "private_1_subnet" {
 
   tags = {
     Project = var.project_name
-    Name    = "Private 1"
+    Name    = "${var.project_name} Private 1 Subnet"
   }
 }
 
@@ -55,7 +56,7 @@ resource "aws_subnet" "private_2_subnet" {
 
   tags = {
     Project = var.project_name
-    Name    = "Private 2"
+    Name    = "${var.project_name} Private 2 Subnet"
   }
 }
 
@@ -65,12 +66,13 @@ resource "aws_subnet" "private_3_subnet" {
 
   tags = {
     Project = var.project_name
-    Name    = "Private 3"
+    Name    = "${var.project_name} Private 3 Subnet"
   }
 }
 
 resource "aws_route_table" "wp_vpc_route_table" {
   vpc_id = aws_vpc.wp_vpc.id
+  Name   = "${var.project_name} Route Table"
 
   tags = {
     Project = var.project_name
@@ -79,5 +81,5 @@ resource "aws_route_table" "wp_vpc_route_table" {
 
 resource "aws_internet_gateway" "wp_internet_gateway" {
   vpc_id = aws_vpc.wp_vpc.id
-
+  Name   = "${var.project_name} Internet Gateway"
 }
