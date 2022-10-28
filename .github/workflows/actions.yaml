@@ -41,3 +41,22 @@ jobs:
       - name: Terraform Apply
         id: apply
         run: terraform apply --auto-approve
+
+terraform_destroy:
+    name: terraform destroy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::495425695747:role/terraform_role
+          aws-region: eu-west-2
+
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_wrapper: false
+
+      - name: Terraform Destroy
+        id: destroy
+        run: terraform destroy --auto-approve
