@@ -11,18 +11,21 @@ resource "aws_vpc" "wp_vpc" {
 }
 
 resource "aws_subnet" "public_1_subnet" {
-  vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.16.16.0/20"
+  vpc_id            = aws_vpc.wp_vpc.id
+  cidr_block        = "10.16.16.0/20"
+  availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
     Project = var.project_name
     Name    = "${var.project_name} Public 1 Subnet"
+
   }
 }
 
 resource "aws_subnet" "public_2_subnet" {
-  vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.16.32.0/20"
+  vpc_id            = aws_vpc.wp_vpc.id
+  cidr_block        = "10.16.32.0/20"
+  availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
     Project = var.project_name
@@ -31,8 +34,9 @@ resource "aws_subnet" "public_2_subnet" {
 }
 
 resource "aws_subnet" "public_3_subnet" {
-  vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.16.48.0/20"
+  vpc_id            = aws_vpc.wp_vpc.id
+  cidr_block        = "10.16.48.0/20"
+  availability_zone = data.aws_availability_zones.available.names[2]
 
   tags = {
     Project = var.project_name
@@ -41,8 +45,9 @@ resource "aws_subnet" "public_3_subnet" {
 }
 
 resource "aws_subnet" "private_1_subnet" {
-  vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.16.80.0/20"
+  vpc_id            = aws_vpc.wp_vpc.id
+  cidr_block        = "10.16.80.0/20"
+  availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
     Project = var.project_name
@@ -51,8 +56,9 @@ resource "aws_subnet" "private_1_subnet" {
 }
 
 resource "aws_subnet" "private_2_subnet" {
-  vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.16.96.0/20"
+  vpc_id            = aws_vpc.wp_vpc.id
+  cidr_block        = "10.16.96.0/20"
+  availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
     Project = var.project_name
@@ -61,8 +67,9 @@ resource "aws_subnet" "private_2_subnet" {
 }
 
 resource "aws_subnet" "private_3_subnet" {
-  vpc_id     = aws_vpc.wp_vpc.id
-  cidr_block = "10.16.112.0/20"
+  vpc_id            = aws_vpc.wp_vpc.id
+  cidr_block        = "10.16.112.0/20"
+  availability_zone = data.aws_availability_zones.available.names[2]
 
   tags = {
     Project = var.project_name
