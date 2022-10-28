@@ -42,7 +42,7 @@ jobs:
         id: apply
         run: terraform apply --auto-approve
 
-terraform_destroy:
+  terraform_destroy:
     name: terraform destroy
     runs-on: ubuntu-latest
     steps:
