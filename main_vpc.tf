@@ -1,6 +1,6 @@
 module "aws_vpc" {
-  
-  source = "../wordpress_module_vpc"
+
+  source = "git@github.com:eastonit/eit_module_vpc.git"
 
   vpc_cidr_block              = "10.16.0.0/16"
   enable_dns_hostnames        = true
