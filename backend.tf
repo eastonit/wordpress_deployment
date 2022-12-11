@@ -3,7 +3,7 @@
 terraform {
   backend "s3" {
     bucket = "eit-general-terraform-state"
-    key    = "wordpress-terraform-state.state"
+    key    = "evolve-wordpress-ec2-state.state"
     region = "eu-west-2"
 
     dynamodb_table = "eit-terraform-locks"
@@ -51,7 +51,7 @@ resource "aws_s3_account_public_access_block" "public_access" {
 
 }
 
-# Provision a DynamoDB Table so register styate file locks during Terraform runs
+# Provision a DynamoDB Table so register state file locks during Terraform runs
 resource "aws_dynamodb_table" "terraform_locks" {
   name         = "eit-terraform-locks"
   billing_mode = "PAY_PER_REQUEST"
